@@ -17,13 +17,14 @@ function setup() {
 	world = engine.world;
 
 	//Create the Bodies Here.
-	paper = new Paper(100, 170, 20);
+	paper = new Paper(100, 10, 20);
 
-	base = new dustbin(200, 200, 600, 20);
+	base = new Dustbin(950, 350, 200, 20);
+	left = new Dustbin(840, 284, 20, 150);
+	right = new Dustbin(1040, 284, 20, 150);
+
 
 	ground = new Ground(600, 370, 1200, 20);
-
-	keyPressed();
 
 	Engine.run(engine);
   
@@ -39,14 +40,15 @@ function draw() {
   ground.display();
 
   base.display();
-  
-  drawSprites();
+  left.display();
+  right.display();
+
  
 }
 
 function keyPressed() {
 	if (keyCode === UP_ARROW) {
-		Matter.Body.applyForce(paperObject.body, paperObject.body.position, {x:85, y:-85})
+		Matter.Body.applyForce(paper.body, paper.body.position, {x:75, y:-85})
 	}
 }
 
